@@ -4,23 +4,6 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
-/*model {*/
-  /*  repositories {
-        libs(PrebuiltLibraries) {
-            SDL2 {
-                headers.srcDir "../SDL2/include"
-                binaries.withType(SharedLibraryBinary) {
-                    sharedLibraryFile = file("${gradle.libDistributionRoot}/SDL2/lib/${targetPlatform.getName()}/libSDL2.so")
-                }
-            }
-            main {
-                binaries.withType(SharedLibraryBinary) {
-                    sharedLibraryFile = file("${gradle.libDistributionRoot}/main/lib/${targetPlatform.getName()}/libmain.so")
-                }
-            }
-        }
-    }
-*/
     android {
         compileSdkVersion = gradle.sdkVersion
 
@@ -29,21 +12,6 @@ apply plugin: 'kotlin-android-extensions'
             minSdkVersion gradle.minSdkVersion
             targetSdkVersion gradle.targetSdkVersion
         }
-       /* sources {
-            main {
-                jni {
-                    dependencies {
-                        project ':main' linkage 'shared'
-                    }   
-                }   
-                jniLibs {
-                    source {
-                        srcDir "${gradle.libDistributionRoot}/main/lib"
-                    }   
-                }   
-            }
-        }   */
-
         buildTypes {
             release {
                 minifyEnabled = false
@@ -53,12 +21,10 @@ apply plugin: 'kotlin-android-extensions'
         externalNativeBuild {
             cmake {
                 path "../../CMakeLists.txt"
-                // path "../SDL2/CMakeLists.txt"
                 version "3.10.2"
             }
         }
     }
-/*}*/
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
