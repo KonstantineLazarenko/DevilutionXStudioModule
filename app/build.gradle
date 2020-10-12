@@ -7,6 +7,10 @@ apply plugin: 'kotlin-android-extensions'
     android {
         compileSdkVersion = gradle.sdkVersion
 
+	 aaptOptions {
+       		noCompress 'mpq'
+    	}
+
         defaultConfig {
             applicationId = 'org.diasurgical.devilutionx'
             minSdkVersion gradle.minSdkVersion
